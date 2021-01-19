@@ -16,6 +16,7 @@
     "name": "Jack Cooper",
     "email": "jack@acooper.net"
   },
+  "repository": "https://github.com/jackcooper04/electron-publish-example",
   "license": "MIT",
   "config": {
     "forge": {
