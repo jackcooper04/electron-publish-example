@@ -7,7 +7,7 @@
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
-    "make": "electron-forge make",
+    "make": "electron-forge make && node createInstaller.js",
     "publish": "electron-forge publish",
     "lint": "echo \"No linting configured\""
   },
@@ -60,6 +60,7 @@
   "dependencies": {
     "electron-log": "^4.3.1",
     "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^4.0.1",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
