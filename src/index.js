@@ -5,7 +5,7 @@ require('update-electron-app')()
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
 }
-
+//HelloWorld
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
