@@ -1,10 +1,10 @@
-const { app, BrowserWindow , autoUpdater} = require('electron');
+const { app, BrowserWindow } = require('electron');
 const path = require('path');
 require('update-electron-app')({
   repo:'jackcooper04/electron-publish-example',
   updateInterval:'5 min',
   logger:require('electron-log'),
-  
+
 })
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
