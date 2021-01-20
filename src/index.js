@@ -37,7 +37,7 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 autoUpdater.on('checking-for-update',function(){
-  showNotification('Checking For Updates','now')
+  //showNotification('Checking For Updates','now')
 })
 autoUpdater.on('update-available',function(){
   showNotification('Update Found!','Downloading')
