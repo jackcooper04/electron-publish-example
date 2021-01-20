@@ -14,11 +14,12 @@ function getInstallerConfig () {
   const outPath = path.join(rootPath, 'out')
 
   return Promise.resolve({
-    appDirectory: path.join(outPath, 'electron-publish-example-win32-x64/'),
-    authors: 'Christian Engvall',
-    noMsi: true,
-    outputDirectory: path.join(outPath),
-    exe: 'electron-publish-example.exe',
+    appDirectory: path.join(outPath, 'electronpublishexample-win32-x64/'),
+    authors: 'Jack Cooper',
+    noMsi: false,
+ 
+    outputDirectory: path.join(outPath,'make','squirrel.windows','x64'),
+    exe: 'electronpublishexample.exe',
     setupExe: 'ElectronTutorialAppInstaller.exe',
    
   })
