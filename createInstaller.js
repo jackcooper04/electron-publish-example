@@ -1,26 +1,42 @@
-const createWindowsInstaller = require('electron-winstaller').createWindowsInstaller
-const path = require('path')
+// ./build_installer.js
 
-getInstallerConfig()
-  .then(createWindowsInstaller)
-  .catch((error) => {
-    console.error(error.message || error)
-    process.exit(1)
-  })
+// 1. Import Modules
+const { MSICreator } = require('electron-wix-msi');
+const path = require('path');
 
-function getInstallerConfig () {
-  console.log('creating windows installer')
-  const rootPath = path.join('./')
-  const outPath = path.join(rootPath, 'out')
+// 2. Define input and output directory.
+// Important: the directories must be absolute, not relative e.g
+// appDirectory: "C:\\Users\sdkca\Desktop\OurCodeWorld-win32-x64",
+const APP_DIR = 'C:/Users/User/Documents/main-projects/electron-publish-example/out/electronpublishexample-win32-x64';
+// outputDirectory: "C:\\Users\sdkca\Desktop\windows_installer",
+const OUT_DIR = 'C:/Users/User/Documents/main-projects/electron-publish-example/out/installer';
 
-  return Promise.resolve({
-    appDirectory: path.join(outPath, 'electronpublishexample-win32-x64/'),
-    authors: 'Jack Cooper',
-    noMsi: false,
- 
-    outputDirectory: path.join(outPath,'make','squirrel.windows','x64'),
-    exe: 'electronpublishexample.exe',
-    setupExe: 'ElectronTutorialAppInstaller.exe',
-   
-  })
-}
+// 3. Instantiate the MSICreator
+const msiCreator = new MSICreator({
+    appDirectory: APP_DIR,
+    outputDirectory: OUT_DIR,
+
+    // Configure metadata
+    description: 'sfds',
+    exe: 'electronpublishexample',
+    name: 'updatetest',
+
+    manufacturer: 'Jack Cooper Projects',
+    version: '1.0.0',
+    
+
+    // Configure installer User Interface
+    ui: {
+        chooseDirectory: true
+    },
+});
+
+// 4. Create a .wxs template file
+msiCreator.create().then(function(){
+
+    // Step 5: Compile the template to a .msi file
+    msiCreator.compile();
+});
+
+
+
