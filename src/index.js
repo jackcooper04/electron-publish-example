@@ -42,6 +42,9 @@ autoUpdater.on('checking-for-update',function(){
 autoUpdater.on('update-available',function(){
   showNotification('Update Found!','Downloading')
 })
+autoUpdater.on('update-downloaded',function(){
+  app.relaunch();
+})
 app.on('ready', createWindow);
 
 // Quit when all windows are closed, except on macOS. There, it's common
