@@ -1,4 +1,4 @@
-const { app, BrowserWindow,autoUpdater } = require('electron');
+const { app, BrowserWindow,autoUpdater,Notification } = require('electron');
 const path = require('path');
 require('update-electron-app')({
   repo:'jackcooper04/electron-publish-example',
@@ -6,6 +6,14 @@ require('update-electron-app')({
   logger:require('electron-log'),
 
 })
+function showNotification (title,message) {
+  const notification = {
+    title: title,
+    body: message,
+  
+  }
+  new Notification(notification).show()
+}
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
@@ -29,7 +37,10 @@ const createWindow = () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 autoUpdater.on('checking-for-update',function(){
-  console.log('checking')
+  showNotification('Checking For Updates','now')
+})
+autoUpdater.on('update-available',function(){
+  showNotification('Update Found!','Downloading')
 })
 app.on('ready', createWindow);
 
